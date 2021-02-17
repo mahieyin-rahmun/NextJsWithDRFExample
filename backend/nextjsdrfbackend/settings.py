@@ -60,9 +60,9 @@ SOCIALACCOUNT_EMAIL_REQUIRED = False
 
 SITE_ID = 1  # https://dj-rest-auth.readthedocs.io/en/latest/installation.html#registration-optional
 REST_USE_JWT = True # use JSON Web Tokens
-JWT_AUTH_COOKIE = "nextjsdrf-access-token"
-JWT_AUTH_REFRESH_COOKIE = "nextjsdrf-refresh-token"
-JWT_AUTH_SAMESITE = "none"
+# JWT_AUTH_COOKIE = "nextjsdrf-access-token"
+# JWT_AUTH_REFRESH_COOKIE = "nextjsdrf-refresh-token"
+# JWT_AUTH_SAMESITE = "none"
 
 
 MIDDLEWARE = [
