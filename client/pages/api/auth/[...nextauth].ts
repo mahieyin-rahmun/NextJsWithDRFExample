@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import NextAuth from "next-auth";
+import NextAuth, { User } from "next-auth";
 import { InitOptions } from "next-auth";
 import Providers from "next-auth/providers";
 import axios from "axios";
@@ -7,6 +7,14 @@ import axios from "axios";
 import { AuthenticatedUser } from "../../../types";
 
 const settings: InitOptions = {
+  secret: process.env.SESSION_SECRET,
+  session: {
+    jwt: true,
+    maxAge: 24 * 60 * 60, // 24 hours
+  },
+  jwt: {
+    secret: process.env.JWT_SECRET,
+  },
   providers: [
     Providers.Google({
       clientId: process.env.GOOGLE_CLIENT_ID,
@@ -19,7 +27,7 @@ const settings: InitOptions = {
       if (account.provider === "google") {
         // extract these two tokens
         const { accessToken, idToken } = account;
-    
+
         // make a POST request to the DRF backend
         try {
           const response = await axios.post(
@@ -30,11 +38,12 @@ const settings: InitOptions = {
               id_token: idToken,
             },
           );
-    
+
           // extract the returned token from the DRF backend and add it to the `user` object
-          const { access_token } = response.data;
+          const { access_token, refresh_token } = response.data;
           user.accessToken = access_token;
-    
+          user.refreshToken = refresh_token;
+
           return true; // return true if everything went well
         } catch (error) {
           return false;
@@ -42,21 +51,24 @@ const settings: InitOptions = {
       }
       return false;
     },
-    
+
     async jwt(token, user: AuthenticatedUser, account, profile, isNewUser) {
       if (user) {
-        const { accessToken } = user;
-    
+        const { accessToken, refreshToken } = user;
+
         // reform the `token` object from the access token we appended to the `user` object
-        token.accessToken = accessToken;
+        token = {
+          ...token,
+          accessToken,
+          refreshToken,
+        };
+
+        // remove the tokens from the user objects just so that we don't leak it somehow
+        delete user.accessToken;
+        delete user.refreshToken;
       }
-    
+
       return token;
-    },
-    
-    async session(session, user: AuthenticatedUser) {
-      session.accessToken = user.accessToken;
-      return session;
     },
   },
 };
