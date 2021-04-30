@@ -4,6 +4,7 @@ This repository contains the code for a two part article series that deals with 
 
 
 The articles:
+
 [Part 1](https://mahieyin-rahmun.medium.com/how-to-configure-social-authentication-in-a-next-js-next-auth-django-rest-framework-application-cb4c82be137).
 - The basics
 - Getting access token
