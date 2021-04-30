@@ -63,7 +63,7 @@ export function useAuth(refreshInterval?: number) {
     custom hook that keeps the session up-to-date by refreshing it
 
     @param {number} refreshInterval: The refresh/polling interval in seconds. default is 20.
-    @return {tuple} A tuple of the Session and boolean
+    @return {object} An object of the Session and boolean loading value
   */
   const { data, error } = useSwr(sessionUrl, fetchSession, {
     revalidateOnFocus: true,
