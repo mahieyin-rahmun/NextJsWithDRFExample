@@ -1,6 +1,6 @@
 # Next.js + NextAuth + Django Rest Framework Social Authentication Example
 
-This repository contains the code for a two part article series that deals with connecting a Django Rest Framework backend with a Next.js + Next-Auth app.
+This repository contains the code for a two-part article series that deals with connecting a Django Rest Framework backend with a Next.js + Next-Auth client with Social Authentication. In this example, we use OAuth with Google, but this can be extended to any arbitrary number of Providers.
 
 
 The articles:
