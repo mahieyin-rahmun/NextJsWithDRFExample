@@ -82,6 +82,6 @@ export function useAuth(refreshInterval?: number) {
 
   return {
     session: data,
-    loading: !data && !error,
+    loading: typeof data === "undefined" && typeof error === "undefined",
   };
 }
