@@ -39,6 +39,7 @@ const settings: NextAuthOptions = {
   jwt: {
     secret: process.env.JWT_SECRET,
   },
+  debug: process.env.NODE_ENV === "development",
   providers: [
     Providers.Google({
       clientId: process.env.GOOGLE_CLIENT_ID,
@@ -76,8 +77,8 @@ const settings: NextAuthOptions = {
             // reform the `token` object from the access token we appended to the `user` object
             token = {
               ...token,
-              access_token,
-              refresh_token,
+              accessToken: access_token,
+              refreshToken: refresh_token,
             };
 
             return token;
