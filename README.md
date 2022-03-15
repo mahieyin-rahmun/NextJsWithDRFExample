@@ -1,6 +1,6 @@
 # Repository Archived
 
-The solution proposed here is currently outdated as of March 15, 2022. Next-Auth.js has had several revisions by now, (including a new v4.0 release)[https://next-auth.js.org/getting-started/example] with a lot of changes to the API and new features. Please follow the updated documentation.
+The solution proposed here is currently outdated as of March 15, 2022. Next-Auth.js has had several revisions by now, [including a new v4.0 release](https://next-auth.js.org/getting-started/example) with a lot of changes to the API and new features. Please follow the updated documentation.
 
 # Next.js + NextAuth + Django Rest Framework Social Authentication Example
 
