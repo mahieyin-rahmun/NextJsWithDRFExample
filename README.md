@@ -1,3 +1,7 @@
+# Repository Archived
+
+The solution proposed here is currently outdated as of March 15, 2022. Next-Auth.js has had several revisions by now, (including a new v4.0 release)[https://next-auth.js.org/getting-started/example] with a lot of changes to the API and new features. Please follow the updated documentation.
+
 # Next.js + NextAuth + Django Rest Framework Social Authentication Example
 
 This repository contains the code for a two-part article series that deals with connecting a Django Rest Framework backend with a Next.js + Next-Auth client with Social Authentication. In this example, we use OAuth with Google, but this can be extended to any arbitrary number of Providers.
